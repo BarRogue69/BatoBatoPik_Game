@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock-Scissor-Paper</title>
+    <link rel="icon" type="png" href="images/rsp1.png" />
+  </head>
+  <style>
+    
+    body {
+      background-color: rgb(128, 255, 255);
+      text-align: center;
+      margin-top: 15%;
+    }
+    .rsp {
+      display: inline-block;
+      text-align: center;
+    }
+    .footer {
+      margin-top: 1%;
+    }
+    button {
+      background-color: rgb(255, 255, 255);
+      padding: 5px;
+      cursor: pointer;
+    }
+
+  </style>
+  <body>
+    <div>
+      <h1>Game On!</h1>
+
+      <div class="rsp">
+        <p class="p1"><u>PLAYER 1</u></p>
+        <img class="img1" src="images/rsp1.png" alt="" />
+      </div>
+
+      <div class="rsp">
+        <p class="p2"><u>PLAYER 2</u></p>
+        <img class="img2" src="images/rsp1.png" alt="" />
+      </div>
+
+      <div class="click-me">
+        <button onClick="window.location.reload();">Roll Hand</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <footer><b>© SSJingco ⛧</b></footer>
+    </div>
+
+    <script>
+      // Step 1: Randomizing Images
+      var randomPicture1 = Math.floor(Math.random()*3) + 1;
+
+      // Step 2: Creating Variable "randomImage"
+      // rsp1;rsp2;rsp3 === rock;paper;scissors
+      var randomImage1 = "rsp" + randomPicture1 + ".png";
+
+      // Step 3: Adding Image Source Value
+      var randomImageSource1 = "images/" + randomImage1;
+
+      // Step 4: - Image Path DOM Manipulation
+      var image1 = document.querySelectorAll("img")[0];
+
+      // Step 5: Change Image Attribute
+      image1.setAttribute("src", randomImageSource1);
+
+      // ^^<<-P1 - D - I - V - I - D - E - R - P2->>vv //
+
+      var randomPicture2 = Math.floor(Math.random() * 3) + 1;
+      var randomImage2 = "rsp" + randomPicture2 + ".png";
+      var randomImageSource2 = "images/" + randomImage2;
+      var image2 = document.querySelectorAll("img")[1];
+      image2.setAttribute("src", randomImageSource2);
+
+      var rock = "rsp1.png";
+      var scissor = "rsp2.png";
+      var paper = "rsp3.png";
+
+      // - - - - - ROCK CONDITION - - - - - //
+
+      if (randomImage1 === rock && randomImage2 === scissor) {
+        document.querySelector("h1").innerHTML = "ROCK WON!";
+        document.querySelector(".p2").innerHTML = "<strike>PLAYER 2 LOST!</strike>";
+        document.querySelector(".p1").innerHTML = "<b><u>PLAYER 1 WINS!</u></b>";
+      }
+      else if (randomImage1 === scissor && randomImage2 === rock) {
+        document.querySelector("h1").innerHTML = "ROCK WON!";
+        document.querySelector(".p1").innerHTML = "<strike>PLAYER 1 LOST!</strike>";
+        document.querySelector(".p2").innerHTML = "<b><u>PLAYER 2 WINS!</u></b>";
+      }
+
+      // - - - - - PAPER CONDITION - - - - - //
+
+      else if (randomImage1 === paper && randomImage2 === rock) {
+        document.querySelector("h1").innerHTML = "PAPER WON!";
+        document.querySelector(".p2").innerHTML = "<strike>PLAYER 2 LOST!</strike>";
+        document.querySelector(".p1").innerHTML = "<b><u>PLAYER 1 WINS!</u></b>";
+      }
+      else if (randomImage1 === rock && randomImage2 === paper) {
+        document.querySelector("h1").innerHTML = "PAPER WON!";
+        document.querySelector(".p1").innerHTML = "<strike>PLAYER 1 LOST!</strike>";
+        document.querySelector(".p2").innerHTML = "<b><u>PLAYER 2 WINS!</u></b>";
+      }
+
+      // - - - - - SCISSOR CONDITION - - - - - //
+
+      else if (randomImage1 === scissor && randomImage2 === paper) {
+        document.querySelector("h1").innerHTML = "SCISSORS WON!";
+        document.querySelector(".p2").innerHTML = "<strike>PLAYER 2 LOST!</strike>";
+        document.querySelector(".p1").innerHTML = "<b><u>PLAYER 1 WINS!</u></b>";
+      }
+      else if (randomImage1 === paper && randomImage2 === scissor) {
+        document.querySelector("h1").innerHTML = "SCISSORS WON!";
+        document.querySelector(".p1").innerHTML = "<strike>PLAYER 1 LOST!</strike>";
+        document.querySelector(".p2").innerHTML = "<b><u>PLAYER 2 WINS!</u></b>";
+      }
+
+      // - - - - - DRAW/TIE CONDITION - - - - - //
+
+      else {
+        document.querySelector("h1").innerHTML = "DRAW! ROLL AGAIN!";
+      }
+    </script>
+  </body>
+</html>
